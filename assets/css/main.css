@@ -1273,20 +1273,17 @@ section,
 .starter-section {
   /* Add your styles here */
   /* ===== Custom Fixes for About Section Contact Info ===== */
-.about ul li {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: nowrap;
-}
-
-.about ul li span {
-  white-space: nowrap;
-}
-
-.about ul li strong {
-  display: inline-block;
-  width: 90px; /* Adjust for alignment */
-}
-
+  .about ul li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: nowrap;
+    max-width: 100%; /* makes sure flex doesn’t constrain it too tightly */
+  }
+  
+  .about ul li span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
