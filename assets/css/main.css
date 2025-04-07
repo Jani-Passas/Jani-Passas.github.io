@@ -1273,17 +1273,53 @@ section,
 .starter-section {
   /* Add your styles here */
   /* ===== Custom Fixes for About Section Contact Info ===== */
-  .about ul li {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: nowrap;
-    max-width: 100%; /* makes sure flex doesn’t constrain it too tightly */
+  .about .content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
   }
-  
-  .about ul li span {
-    white-space: nowrap;
+
+  .about .content ul li {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 15px;
+    width: 100%;
+  }
+
+  .about .content ul li i {
+    flex-shrink: 0;
+    font-size: 16px;
+    margin-right: 8px;
+    color: #0ea2bd; /* Match your theme color */
+  }
+
+  .about .content ul li strong {
+    flex-shrink: 0;
+    min-width: 80px; /* Consistent width for all labels */
+    margin-right: 8px;
+  }
+
+  .about .content ul li span {
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+
+  .about .content ul li span a {
+    color: #0ea2bd; /* Match your theme color */
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+
+  .about .content ul li span a:hover {
+    color: #14c1df; /* Slightly lighter for hover state */
+    text-decoration: underline;
+  }
+
+  /* Adjust column size to fit content better */
+  @media (min-width: 992px) {
+    .about .content.col-lg-4 {
+      flex: 0 0 auto;
+      width: 38%; /* Slightly wider than the default 33.33% */
+    }
   }
 }
