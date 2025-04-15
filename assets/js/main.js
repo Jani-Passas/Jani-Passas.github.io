@@ -226,4 +226,45 @@
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
 
+  const contactForm = document.querySelector('.php-email-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const formData = new FormData(contactForm);
+      const errorMsg = contactForm.querySelector('.error-message');
+      const sentMsg = contactForm.querySelector('.sent-message');
+      const loadingMsg = contactForm.querySelector('.loading');
+
+      // Show loading indicator
+      loadingMsg.style.display = 'block';
+      errorMsg.style.display = 'none';
+      sentMsg.style.display = 'none';
+
+      try {
+        const response = await fetch(contactForm.action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        loadingMsg.style.display = 'none';
+
+        if (response.ok) {
+          sentMsg.style.display = 'block';
+          contactForm.reset();
+        } else {
+          const data = await response.json();
+          errorMsg.innerText = data.message || 'There was a problem submitting the form.';
+          errorMsg.style.display = 'block';
+        }
+      } catch (error) {
+        loadingMsg.style.display = 'none';
+        errorMsg.innerText = 'Network error. Please try again.';
+        errorMsg.style.display = 'block';
+      }
+    });
+  }
 })();
