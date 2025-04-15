@@ -253,6 +253,7 @@
         loadingMsg.style.display = 'none';
 
         if (response.ok) {
+          errorMsg.style.display = 'none';
           sentMsg.style.display = 'block';
           contactForm.reset();
         } else {
